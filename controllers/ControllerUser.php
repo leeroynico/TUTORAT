@@ -27,7 +27,6 @@ class ControllerUser
 
     }
 
-    session_start();
     
     if (!empty($errors)) {
       

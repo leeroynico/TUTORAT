@@ -9,7 +9,7 @@ if ($_POST) {
 }
 ?>
 
-<?php require('views/header.php'); ?>
+<?php require('./views/header.php'); ?>
 
   <div class="container">
     <?php
