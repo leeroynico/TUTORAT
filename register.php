@@ -4,6 +4,7 @@ session_start();
 require_once('./controllers/ControllerUser.php');
 
 if ($_POST) {
+  $_SESSION['value'] = [$_POST['email'], $_POST['password'], $_POST['confirmPassword'], $_POST['stack'], $_POST['roleMontor'], $_POST['rolePadawan']];
   $controllerUser = new ControllerUser();
   $controllerUser->addUser($_POST['email'], $_POST['password'], $_POST['confirmPassword']);
 }
@@ -43,11 +44,11 @@ if ($_POST) {
         <div class="input-group-prepend">
           <label class="input-group-text" for="stack">languages</label>
         </div>
-        <select class="custom-select" id="stack" name="stack">
-          <option selected>choisir ...</option>
-          <option value="Javascript">Javascript</option>
-          <option value="PHP">PHP</option>
+        <select multiple class="custom-select" id="stack" name="stack[]">
+          <option value="HTML">HTML</option>
           <option value="CSS">CSS</option>
+          <option value="JS">Javascript</option>
+          <option value="PHP">PHP</option>
         </select>
       </div>
 

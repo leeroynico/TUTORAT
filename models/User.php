@@ -8,7 +8,7 @@ class User {
 
   public function verifExistedUser($email) { 
     if(!is_null($this->pdo)) {
-      $stmt = $this->pdo->prepare('SELECT * FROM usertest WHERE mail= ?');
+      $stmt = $this->pdo->prepare('SELECT * FROM user WHERE email= ?');
       $stmt->execute(array($email));
 
       $userData=[];
@@ -22,7 +22,7 @@ class User {
 
   public function addUser($email, $password) {
     if(!is_null($this->pdo)) {
-      $stmt = $this->pdo->prepare('INSERT INTO usertest ( mail, pass, type) VALUES (:email, :password, "padawan")');
+      $stmt = $this->pdo->prepare('INSERT INTO user ( email, pass, type) VALUES (:email, :password, "padawan")');
       $stmt->execute([
         ':email' => $email,
         ':password' => $password
