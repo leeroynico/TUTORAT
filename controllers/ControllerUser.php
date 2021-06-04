@@ -43,7 +43,6 @@ class ControllerUser
       if (count($response) == 0 || !isset($response)) {  // si la réponse est null donc aucun user n'existe 
         $user->addUser($email, $passwordHash);
         $_SESSION['flash']['success'] = 'Vous êtes bien inscrit';
-
       } else {
         $_SESSION['flash']['alert'] = 'Votre adresse email est déja utilisé par un autre utilisateur.';
 

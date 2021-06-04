@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once('./models/Stack.php');
 require_once('./controllers/ControllerUser.php');
 
 if ($_POST) {
@@ -45,11 +45,16 @@ if ($_POST) {
           <label class="input-group-text" for="stack">languages</label>
         </div>
         <select multiple class="custom-select" id="stack" name="stack[]">
-          <option value="HTML">HTML</option>
-          <option value="CSS">CSS</option>
-          <option value="JS">Javascript</option>
-          <option value="PHP">PHP</option>
+        <?php
+          $stack = new Stack(); 
+          foreach($stack->gettechnolist() as $tehno){
+              echo '<option value="'.$tehno['id'].'">'.$tehno['name'].'</option>';
+          }
+            ?>
         </select>
+        
+          
+            
       </div>
 
         <div class="col-md-4">
@@ -77,7 +82,7 @@ if ($_POST) {
 
   <h2>DEBUG :</h2>
     <?php
-    var_dump($_SESSION); 
+    var_dump($_SESSION);
     ?>
 
 <?php unset($_SESSION['errors']); // permet d effacer les erreurs de l'affichage mais ça ne me les affiche plus  ?>

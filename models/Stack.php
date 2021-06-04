@@ -18,4 +18,4 @@ class Stack {
     }
     return null;
   }
-  ?>
+}
