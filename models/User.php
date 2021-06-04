@@ -31,6 +31,18 @@ class User {
     return false;
   }
 
+  public function testUserPass($email, $password) {
+    if(!is_null($this->pdo)) {
+      $stmt = $this->pdo->prepare('SELECT * FROM user WHERE email = :email AND password = :password');
+      $stmt->execute([
+        ':email' => $email,
+        ':password' => $password
+      ]);
+      return true;
+    }
+    return false;
+  }
+
   public function removeUserbyUser($id, $password) {
     if(!is_null($this->pdo)) {
       $stmt = $this->pdo->prepare('DELETE FROM user WHERE id = :id AND password = :password');
